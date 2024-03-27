@@ -1,0 +1,36 @@
+mxIt -> 300
+nPop -> 150
+beta_min ->  1.375
+beta_max -> 1.5 
+pcR -> 4
+
+ 
+TolMin == 4 : 100 
+TolMin == 46 : 200 
+TolMin == 32 : 300 
+TolMin == 46 : 400 
+TolMin == 34 : 500
+___ 
+TolMin == 35 : 50 
+TolMin == 45 : 100 
+TolMin == 41 : 150 
+TolMin == 38 : 500 
+TolMin == 10 : 1000
+___ 
+TolMin == 37 : -0.5 
+TolMin == 25 : 0.125 
+TolMin == 28 : 0.75 
+TolMin == 3 : 1.375
+TolMin == Inf : 2
+___ 
+TolMin == 10 : -1
+TolMin == Inf : 0.25 
+TolMin == 22 : 1.5 
+TolMin == 73 : 2.75 
+TolMin == 71 : 4
+___ 
+TolMin == 30 : -0.5 
+TolMin == 28 : 0.625 
+TolMin == 25 : 1.75 
+TolMin == 17 : 2.875 
+TolMin == 15 : 4
