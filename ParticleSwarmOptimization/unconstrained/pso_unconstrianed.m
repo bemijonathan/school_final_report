@@ -1,13 +1,11 @@
-
 clc; clear; clf;
 
-addpath('./shared/');
+addpath('../shared/');
 
 %% Problem Definiton
 
 problem = setupOptimizationProblem();
 params = setupPSOParams();
-ccParams = setUpConstrictionCoefficients();
 population = InitializePopulation(problem, params);
 
 %% Calling PSO
@@ -52,12 +50,6 @@ PlotPSOParameterEffects('socialAccCoefficient', linspace(-0.5, 4, 5), SPOattribu
 % then call the benchmark function
 
 
-%% Benchmark C
-
-benchMarkCMetaData.titleText = 'Best Cost vs Iterations - Rosenbrock showing effect of constriction coefficient';
-benchMarkC = BenchMark(problem, ccParams, benchMarkCMetaData);
-
-
 %% Parameters and params
 
 function z = setupOptimizationProblem()
@@ -96,34 +88,3 @@ p.pausing = true;
 p.showContourPlot = true;
 
 end
-
-function cc = setUpConstrictionCoefficients()
-% Define Constriction Coefficients
-% Initialize kappa, a constant used in the calculation of constriction coefficient.
-kappa = 1;
-
-% phi1 and phi2 represent cognitive and social coefficients respectively.
-phi1 = 2.05;
-phi2 = 2.05;
-
-% Calculate the sum of cognitive and social coefficients.
-phi = phi1 + phi2;
-
-% Compute the constriction coefficient chi using Clerc and Kennedy's formula.
-chi = 2*kappa/abs(2-phi-sqrt(phi^2-4*phi));
-
-% Setup PSO parameters by calling a custom function setupPSOParams.
-cc = setupPSOParams();
-
-% Assign the calculated constriction coefficient chi to the inertiaCoefficient.
-cc.inertiaCoefficient = chi; % Intertia Coefficient from Constriction Coefficients
-
-% Calculate and assign personal acceleration coefficient, 
-% scaled by constriction coefficient chi.
-cc.personalAccCoefficient = chi*phi1; % Personal Acceleration Coefficient from Constriction Coefficients
-
-% Calculate and assign social acceleration coefficient, 
-% scaled by constriction coefficient chi.
-cc.socialAccCoefficient = chi*phi2; % Social Acceleration Coefficient from Constriction Coefficients
-end
-

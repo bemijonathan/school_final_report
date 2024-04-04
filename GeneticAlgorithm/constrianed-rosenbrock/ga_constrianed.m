@@ -1,20 +1,27 @@
-clear; clc;
+clear; clc; clf;
 
 addpath('../shared')
 
 %% Problem Definition (Minimization Problem we want to minimize the costfunction)
-problem.costFunction = @(x) MinOne(x);
+
+CostFunction = @(x1,x2) Himmelblau(x1,x2);                                      % Cost Function
+Constraints = @(x1,x2,R) InequalityConstraints(x1,x2,R);                    % Constraint
+problem.FitnessValue = @(x1,x2,R) CostFunction(x1,x2) + Constraints(x1,x2,R); 
+
+
 
 % number of variables to be optimized  in real world problems example can be
 % like designing an aircraft wing, the variables might include dimensions, materials, angles,
-problem.numberVariables = 100;
+problem.numberVariables = 2;
+problem.VarMin = 0;
+problem.VarMax = 6;
 
 %% Genetic Algorithm Parameters
 
 
 % 1. Termination Criteria
-params.maximumIteration = 100;
-params.populationSize = 100;
+params.maximumIteration = 5000;
+params.populationSize = 20;
 %  selection pressure
 params.beta = 1;
 % 3. Crossover Probability
@@ -23,20 +30,23 @@ params.crossOverProbability = 1;
 params.mutationProbability = 0.02;
 params.eliminationType = "FitnessBased";
 % 5. Selection Method
-params.selectionMethod = "RouletteWheel";
+params.selectionMethod = "Tournament";
 % 6. Crossover Type
 params.crossoverType  = "Single_Double_Uniform";
 % 7. Mutation Type
 params.mutationType = "BitFlip";
+params.pausing = true;
+params.R = 100;
+params.tolerance =  10^-2;
 
 
 
 %% Run GA
 out = RunGA(problem, params);
-semilogy(out.bestcost, 'LineWidth', 2);
-xlabel('Iterations');
-ylabel('Best Cost');
-grid on;
+% semilogy(out.bestcost, 'LineWidth', 2);
+% xlabel('Iterations');
+% ylabel('Best Cost');
+% grid on;
 
 
 %% median bench mark after 5 iterations

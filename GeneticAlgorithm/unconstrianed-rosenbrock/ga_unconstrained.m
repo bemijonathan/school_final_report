@@ -3,19 +3,23 @@ clear; clc;
 addpath('../shared')
 
 %% Problem Definition (Minimization Problem we want to minimize the costfunction)
-problem.costFunction = @(x) MinOne(x);
+problem.costFunction = @(x, y) Rosenbrock(x, y);
 
 % number of variables to be optimized  in real world problems example can be
 % like designing an aircraft wing, the variables might include dimensions, materials, angles,
-problem.numberVariables = 100;
+problem.numberVariables = 2;
+
+problem.VarMin = -5;            % Lower Bound of Decision Variables
+problem.VarMax = 5;             % Upper Bound of Decision Variables
 
 %% Genetic Algorithm Parameters
 
 
 % 1. Termination Criteria
-params.maximumIteration = 100;
+params.maximumIteration = 500;
+
 params.populationSize = 100;
-%  selection pressure
+% 2. Selection pressure
 params.beta = 1;
 % 3. Crossover Probability
 params.crossOverProbability = 1;
@@ -28,15 +32,16 @@ params.selectionMethod = "RouletteWheel";
 params.crossoverType  = "Single_Double_Uniform";
 % 7. Mutation Type
 params.mutationType = "BitFlip";
-
+% 9. Mutation Type
+params.pausing = true;
 
 
 %% Run GA
 out = RunGA(problem, params);
-semilogy(out.bestcost, 'LineWidth', 2);
-xlabel('Iterations');
-ylabel('Best Cost');
-grid on;
+% plot(out.bestcost, 'LineWidth', 2);
+% xlabel('Iterations');
+% ylabel('Best Cost');
+% grid on;
 
 
 %% median bench mark after 5 iterations

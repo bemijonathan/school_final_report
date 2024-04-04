@@ -1,16 +1,16 @@
+
 clc; clear; clf;
 
-addpath('./shared/');
+addpath('../shared/');
 
 %% Problem Definiton
 
 problem = setupOptimizationProblem();
-params = setupPSOParams();
-ccParams = setUpConstrictionCoefficients();
-population = InitializePopulation(problem, params);
+ccparams = setUpConstrictionCoefficients(); 
+population = InitializePopulation(problem, ccparams);
 
 %% Calling PSO
-out = PSO(problem, params, population); % Execute standard PSO algorithm
+out = PSO(problem, ccparams, population); % Execute standard PSO algorithm
 BestSol = out.BestSol; % Best Solution
 BestCosts = out.BestCosts; % Best Costs
 
@@ -27,7 +27,7 @@ grid on;
 % we plot 10 runs of the algorithm and take the median of
 
 benchMarkMetaData.titleText = 'Best Cost vs Iterations - Rosenbrock';
-benchMarkA = BenchMark(problem, params, benchMarkMetaData);
+benchMarkA = BenchMark(problem, ccparams, benchMarkMetaData);
 
 
 %%  Benchmark B
@@ -38,7 +38,7 @@ figure;
 % the same population
 SPOattributes.population = population;
 SPOattributes.problem = problem;
-SPOattributes.params = params;
+SPOattributes.params = ccparams;
 
 % Call the function for each parameter, specifying the subplot index each time
 PlotPSOParameterEffects('maximumIteration', [50, 100, 150, 200, 250], SPOattributes, 1);
@@ -60,10 +60,13 @@ benchMarkC = BenchMark(problem, ccParams, benchMarkCMetaData);
 %% Parameters and params
 
 function z = setupOptimizationProblem()
-z.CostFunction = @(x, x2) Rosenbrock(x, x2);
-z.numberOfVariables = 2;
-z.decisionVarLowerBound = -10;
-z.decisionVarUpperBound = 10;
+    z.CostFunction = @(x, x2) Himmelblau(x, x2);
+    z.Constraints = @(x1,x2,R) InequalityConstraints(x1,x2,R);                    % Constraint
+    z.FitnessValue = @(x1,x2,R) z.CostFunction(x1,x2) + z.Constraints(x1,x2,R);       % Fitness Value
+    z.numberOfVariables = 2;
+    z.decisionVarLowerBound = -10;
+    z.decisionVarUpperBound = 10;
+    z.R = 10;
 end
 
 function p = setupPSOParams()
@@ -95,3 +98,34 @@ p.pausing = true;
 p.showContourPlot = true;
 
 end
+
+function cc = setUpConstrictionCoefficients()
+% Define Constriction Coefficients
+% Initialize kappa, a constant used in the calculation of constriction coefficient.
+kappa = 1;
+
+% phi1 and phi2 represent cognitive and social coefficients respectively.
+phi1 = 2.05;
+phi2 = 2.05;
+
+% Calculate the sum of cognitive and social coefficients.
+phi = phi1 + phi2;
+
+% Compute the constriction coefficient chi using Clerc and Kennedy's formula.
+chi = 2*kappa/abs(2-phi-sqrt(phi^2-4*phi));
+
+% Setup PSO parameters by calling a custom function setupPSOParams.
+cc = setupPSOParams();
+
+% Assign the calculated constriction coefficient chi to the inertiaCoefficient.
+cc.inertiaCoefficient = chi; % Intertia Coefficient from Constriction Coefficients
+
+% Calculate and assign personal acceleration coefficient, 
+% scaled by constriction coefficient chi.
+cc.personalAccCoefficient = chi*phi1; % Personal Acceleration Coefficient from Constriction Coefficients
+
+% Calculate and assign social acceleration coefficient, 
+% scaled by constriction coefficient chi.
+cc.socialAccCoefficient = chi*phi2; % Social Acceleration Coefficient from Constriction Coefficients
+end
+

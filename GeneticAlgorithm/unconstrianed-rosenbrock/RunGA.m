@@ -2,9 +2,12 @@
 
 function out = RunGA(problem, params)
 
+% Template for Empty Individual
+empty_individual.Position = [];
+empty_individual.Cost = [];
+
 % Problem
 costFunction = problem.costFunction;
-numberVariables = problem.numberVariables;
 
 % Params
 maximumIteration = params.maximumIteration;
@@ -13,6 +16,7 @@ beta = params.beta;
 selectionMethod = params.selectionMethod;
 eliminationType = params.eliminationType;
 mutationType = params.mutationType;
+pausing = params.pausing;
 
 % probability cummulation
 crossOverProbability = params.crossOverProbability;
@@ -20,32 +24,31 @@ crossOverProbability = params.crossOverProbability;
 totalNumberCrossOvers = round(crossOverProbability*populationSize/2)*2;
 mutationProbability = params.mutationProbability;
 
-% Template for Empty Individual
-empty_individual.Position = [];
-empty_individual.Cost = [];
-
 %  this gives us the population and the best solution found
-[pop, bestsol] = InitializePopulation(populationSize, numberVariables, costFunction, empty_individual);
 
 % Best Cost of Iterations
 bestcost = nan(maximumIteration, 1);  % [nan] * maximumIteration
 lastBestCostIterationIndex = NaN;
 
+[pop, bestsol] = InitializePopulation(params, problem,  empty_individual);
+
 % Main Genetic Algorithm process
 for it = 1:maximumIteration
+    
+    
     % selection probabilities
     probs = CalculateSelectionProbability(pop, beta);
     % Initialize Offsprings Population (storage for offsprings) by creating an empty individual structure
     % 2 offsprings for each crossover
     childPopulation = repmat(empty_individual, totalNumberCrossOvers/2, 2);
-    
     % Crossover
     for k = 1:totalNumberCrossOvers/2
         % Select Parents
         p1 = pop(Selection(probs, selectionMethod));
         p2 = pop(Selection(probs, selectionMethod));
+        disp(k + 1000)
         % Perform Crossover
-        [childPopulation(k, 1).Position, childPopulation(k, 2).Position] = Crossover(p1.Position, p2.Position, params.crossoverType);
+        [childPopulation(k, 1).Position, childPopulation(k, 2).Position] = LinearCrossover(p1.Position, p2.Position);
     end
     
     % Convert childPopulation to Single-Column Matrix
@@ -54,9 +57,9 @@ for it = 1:maximumIteration
     % Mutation
     for l = 1:totalNumberCrossOvers
         % Perform Mutation
-        childPopulation(l).Position = Mutate(childPopulation(l).Position, mutationProbability, mutationType);
+        childPopulation(l).Position = Mutate(childPopulation(l).Position, mutationProbability,  problem, mutationType);
         % Evaluation
-        childPopulation(l).Cost = costFunction(childPopulation(l).Position);
+        childPopulation(l).Cost = costFunction(childPopulation(l).Position(1),childPopulation(l).Position(2));
         % Compare Solution to Best Solution Ever Found
         if childPopulation(l).Cost < bestsol.Cost
             bestsol = childPopulation(l);
@@ -76,6 +79,12 @@ for it = 1:maximumIteration
     
     % Display Itertion Information
     % disp(['Iteration ' num2str(it) ': Best Cost = ' num2str(bestcost(it))]);
+
+         if pausing
+            % clf;
+            % Plot;
+            % pause(2);
+        end
 end
 
 
@@ -87,5 +96,5 @@ out.pop = pop;
 out.bestsol = bestsol;
 out.bestcost = bestcost;
 out.lastBestCostIterationIndex = lastBestCostIterationIndex;
-
+Plot;
 end
