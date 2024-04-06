@@ -6,6 +6,9 @@ problem.nVar = 2;              % Number of Decision Variables
 problem.VarSize = [1 problem.nVar];     % Decision Variables Matrix Size
 problem.VarMin = -5;            % Lower Bound of Decision Variables
 problem.VarMax = 5;             % Upper Bound of Decision Variables
+problem.Constraints = @(x1,x2,R) InequalityConstraints(x1,x2,R);                    % Constraint
+problem.FitnessValue = @(x1,x2,R) problem.CostFunction(x1,x2) + problem.Constraints(x1,x2,R);       % Fitness Value
+
 
 %% DE Parameters
 
@@ -17,5 +20,6 @@ params.pCR = 0.2;          % Crossover Probability
 params.tolerance = 10^-2;  % Tolerance value
 params.pausing = true;
 params.showContourPlot = false;
+params.R = 10;
 
 end 

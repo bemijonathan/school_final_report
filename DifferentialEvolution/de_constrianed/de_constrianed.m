@@ -8,7 +8,7 @@ addpath('../shared');
 
 
 % Show Results
-out = RandOneBin(problem, params);
+out = BestOneBin(problem, params);
 
 %% Plot line graph
 clf;
