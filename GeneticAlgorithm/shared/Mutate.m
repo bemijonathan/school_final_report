@@ -1,22 +1,26 @@
  function y = Mutate(x, mutationProbability, problem, params,  mutationType)
      if mutationType == "singlePoint"
         y = SinglePointMutation(x, randi([0,1], size(x)), mutationProbability);
-     elseif mutationType == "Polynomial"
+     elseif mutationType == "polynomial"
         y = PolynomialMutation(x, mutationProbability, problem, params);
-     elseif mutationType == "Radom"
+     elseif mutationType == "Random"
         y = x;
-        delta = (x.^problem.VarMax - x.^problem.VarMin);
+        delta = (problem.VarMax - problem.VarMin);
         for i = 1:length(x)
           r = rand();
-          if r < 0.5
-            y(i) = y(i) + r * delta(i);
-          else
-            y(i) = y(i) - r * delta(i);
-          end
-          if y(i) < problem.VarMin
-            y(i) = problem.VarMin;
-          elseif y(i) > problem.VarMax
-            y(i) = problem.VarMax;
+          if r < mutationProbability
+            % Generate a random direction for the mutation
+            direction = rand();
+            if direction < 0.5
+                % Add a random value to the gene
+                y(i) = y(i) + rand() * delta;
+            else
+                % Subtract a random value from the gene
+                y(i) = y(i) - rand() * delta;
+            end
+            
+            % Ensure the mutated gene is within bounds
+            y(i) = max(problem.VarMin, min(problem.VarMax, y(i)));
           end
         end
      end
@@ -31,6 +35,7 @@
 
  function r =  PolynomialMutation(offspring, mutationProbability, problem, params)
     randomNumber = rand();
+    r = offspring;
     if randomNumber > mutationProbability
       for i = 1:length(offspring)
         rj = rand();
@@ -48,6 +53,6 @@
           offspring(i) = problem.VarMax;
         end 
       end
+      r = offspring;
     end
-    r = offspring;
  end

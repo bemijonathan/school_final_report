@@ -1,4 +1,6 @@
-function [y1, y2] = Crossover(x1, x2, method, operator)
+function [y1, y2] = Crossover(x1, x2, params)
+    method = params.crossoverType;
+    eta = params.nc;
     if method == "TriplePoint"
         [y1, y2] = TriplePointCrossOver(x1, x2);
     elseif method == "Single_Double_Uniform"
@@ -14,14 +16,7 @@ function [y1, y2] = Crossover(x1, x2, method, operator)
                 [y1, y2] = UniformCrossover(x1, x2);
         end
     elseif method == "SBX"
-        u = rand;
-        if u <= 0.5
-            beta = (2 * u) ^ (1 / (eta + 1));
-        else
-            beta = (1 / (2 * (1 - u))) ^ (1 / (eta + 1));
-        end
-
-        y1 = 0.5 * ((1 + beta) * parent1 + (1 - beta) * parent2);
-        y2 = 0.5 * ((1 - beta) * parent1 + (1 + beta) * parent2);
+        y1 = 0.5.*((x1 + x2) - eta * (x2 - x1));
+        y2 = 0.5.*((x1 + x2) + eta * (x2 - x1));
     end
 end

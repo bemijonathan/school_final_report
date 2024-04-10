@@ -26,11 +26,13 @@ function out = BestOneBin(problem , params)
     TolMin = Inf;
 
 
+    
+    for it = 1:MaxIt
+
+
     [~, bestIdx] = min([pop.Cost]);
     bestIndividual = pop(bestIdx).Position;
     
-    
-    for it = 1:MaxIt
         
         for i = 1:nPop
             
@@ -62,7 +64,7 @@ function out = BestOneBin(problem , params)
             % Selection
             if NewSol.Cost<pop(i).Cost
                 pop(i) = NewSol;
-                
+       
                 if pop(i).Cost<BestSol.Cost
                    BestSol = pop(i);
                 end
@@ -79,10 +81,22 @@ function out = BestOneBin(problem , params)
             disp(['Lower than tolerance: ', num2str(it)]);
             TolMin = it;
             TolMinFlag = true;
+
+            disp("TolMin == " + TolMin);
+            
+            out.BestCost = BestCost;
+            out.BestSol = BestSol;
+            out.TolMin = TolMin;
+
+              if showContourPlot
+                    Plot;
+              end
+
+            return;
         end
         
         % Show Iteration Information
-        %disp(['Iteration ' num2str(it) ': Best Cost = ' num2str(BestCost(it))]);
+        disp(['Iteration ' num2str(it) ': Best Cost = ' num2str(BestCost(it))]);
     
          if pausing
             clf;

@@ -17,6 +17,7 @@ selectionMethod = params.selectionMethod;
 eliminationType = params.eliminationType;
 mutationType = params.mutationType;
 pausing = params.pausing;
+showContourPlot = params.showContourPlot;
 
 % probability cummulation
 crossOverProbability = params.crossOverProbability;
@@ -46,9 +47,9 @@ for it = 1:maximumIteration
         % Select Parents
         p1 = pop(Selection(probs, selectionMethod));
         p2 = pop(Selection(probs, selectionMethod));
-        disp(k + 1000)
+       
         % Perform Crossover
-        [childPopulation(k, 1).Position, childPopulation(k, 2).Position] = LinearCrossover(p1.Position, p2.Position);
+        [childPopulation(k, 1).Position, childPopulation(k, 2).Position] = Crossover(p1.Position, p2.Position, params);
     end
     
     % Convert childPopulation to Single-Column Matrix
@@ -57,7 +58,7 @@ for it = 1:maximumIteration
     % Mutation
     for l = 1:totalNumberCrossOvers
         % Perform Mutation
-        childPopulation(l).Position = Mutate(childPopulation(l).Position, mutationProbability,  problem, params, mutationType);
+        childPopulation(l).Position = Mutate(childPopulation(l).Position, mutationProbability, problem, params, mutationType);
         % Evaluation
         childPopulation(l).Cost = costFunction(childPopulation(l).Position(1),childPopulation(l).Position(2));
         % Compare Solution to Best Solution Ever Found
@@ -92,5 +93,9 @@ out.pop = pop;
 out.bestsol = bestsol;
 out.bestcost = bestcost;
 out.lastBestCostIterationIndex = lastBestCostIterationIndex;
-Plot;
+
+if showContourPlot
+    Plot;
+end
+
 end

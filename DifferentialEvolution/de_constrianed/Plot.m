@@ -5,8 +5,8 @@ decisionVarLowerBound = problem.VarMin;
 decisionVarUpperBound = problem.VarMax;
 
 % Prepare Mesh for Contour Plots
-x1 = linspace(decisionVarLowerBound(1),decisionVarUpperBound(1));
-x2 = linspace(decisionVarLowerBound(end),decisionVarUpperBound(end));
+x1 = linspace(decisionVarLowerBound,decisionVarUpperBound);
+x2 = linspace(decisionVarLowerBound,decisionVarUpperBound);
 [X1,X2] = meshgrid(x1,x2);
 
 
@@ -28,6 +28,7 @@ title('Rosenbrock Function Contour Plot on Iteration ' + string(it) + ' of ' + s
 for i = 1:nPop
     plot(pop(i).Position(1), pop(i).Position(2), 'r*', 'MarkerSize', 10)
 end
+disp(BestSol)
 
 % Plot Best Particle as blue star
 plot(BestSol.Position(1), BestSol.Position(2), 'bo', 'MarkerSize', 20)
