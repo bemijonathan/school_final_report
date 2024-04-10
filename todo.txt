@@ -1,0 +1,8 @@
+
+RGA -
+unconstrained
+  - default values - median
+    - get all default values from slides (30mins) 
+  - effect of parameters - optimal - median
+  - effect of 4 operators compare them
+[] constrainedff

@@ -57,7 +57,7 @@ for it = 1:maximumIteration
     % Mutation
     for l = 1:totalNumberCrossOvers
         % Perform Mutation
-        childPopulation(l).Position = Mutate(childPopulation(l).Position, mutationProbability,  problem, mutationType);
+        childPopulation(l).Position = Mutate(childPopulation(l).Position, mutationProbability,  problem, params, mutationType);
         % Evaluation
         childPopulation(l).Cost = costFunction(childPopulation(l).Position(1),childPopulation(l).Position(2));
         % Compare Solution to Best Solution Ever Found
@@ -68,11 +68,7 @@ for it = 1:maximumIteration
         end
     end
     
-    % Merge and Sort Populations
-    pop = SortPopulation([pop; childPopulation], eliminationType);
-    
-    % Remove Extra Individuals
-    pop = pop(1:populationSize);
+    pop = Elimination(pop, childPopulation, eliminationType, populationSize);
     
     % Update Best Cost of Iteration
     bestcost(it) = bestsol.Cost;

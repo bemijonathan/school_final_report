@@ -8,7 +8,7 @@ addpath("../../shared")
 [problem, params] = Params();
 
 % Show Results
-out = RandOneBin(problem, params);
+out = BestTwoBin(problem, params);
 
 %% Plot line graph
 clf;
@@ -40,25 +40,15 @@ RandOneBinattributes.problem = problem;
 RandOneBinattributes.params = params;
 
 PlotBinParameterEffects('MaxIt', [100, 200, 300, 400, 500, 600], RandOneBinattributes, 1);
+figure
 PlotBinParameterEffects('nPop', [50, 100, 150, 500, 1000, 1300], RandOneBinattributes, 2);
+figure
 PlotBinParameterEffects('beta_min', linspace(0, 1, 6), RandOneBinattributes, 3);
+figure
 PlotBinParameterEffects('beta_max', linspace(0, 1, 6), RandOneBinattributes, 4);
-PlotBinParameterEffects('pCR', linspace(-0.5, 4, 6), RandOneBinattributes, 5);
-
-%%
-RandOneBinattributes.problem = problem;
-params.showContourPlot = true;
-RandOneBinattributes.params = params;
-
-PlotBinParameterEffects('MaxIt', [100, 200, 300, 400, 500, 600], RandOneBinattributes, 1);
-figure;
-PlotBinParameterEffects('nPop', [50, 100, 150, 500, 1000, 1300], RandOneBinattributes, 2);
-figure;
-PlotBinParameterEffects('beta_min', linspace(0, 1, 6), RandOneBinattributes, 3);
-figure;
-PlotBinParameterEffects('beta_max', linspace(0, 1, 6), RandOneBinattributes, 4);
-figure;
+figure
 PlotBinParameterEffects('pCR', linspace(0, 1, 6), RandOneBinattributes, 5);
+
 
 % find the most efficient run
 % then call the benchmark function
@@ -72,12 +62,11 @@ PlotBinParameterEffects('pCR', linspace(0, 1, 6), RandOneBinattributes, 5);
 
 %% set Optimal Parameters
 [problem, params] = Params();
-params.MaxIt = 300;
-params.nPop = 100;
-params.beta_min = 1;
-params.beta_max = 1;
-params.pCR = 4;
-
+params.MaxIt = 400;
+params.nPop = 150;
+params.beta_min =0.4;
+params.beta_max = 0.8;
+params.pCR = 0.8;
 
 %% Benchmark B - With Optimal Parameters
 
@@ -86,10 +75,34 @@ benchMarkMetaData.DiffEvoAlgorithm = @(x, y) RandOneBin(x, y);
 benchMarkB = BenchMark(problem, params, benchMarkMetaData);
 
 
+%% Benchmark C - DE/best/1/bin
+% since
+
+benchMarkMetaData.titleText = 'Best Cost vs Iterations using DE/best/1/bin - Himelblau';
+benchMarkMetaData.DiffEvoAlgorithm = @(x, y) BestOneBin(x, y);
+benchMarkCA = BenchMark(problem, params, benchMarkMetaData);
+
+
+%% Benchmark CB - DE/best/2/bin
+% since
+
+benchMarkMetaData.titleText = 'Best Cost vs Iterations using DE/best/2/bin - Himelblau';
+benchMarkMetaData.DiffEvoAlgorithm = @(x, y) BestTwoBin(x, y);
+benchMarkCB = BenchMark(problem, params, benchMarkMetaData);
+
 %% conclusion showing contour of 3 BenchMark
 
+iterations = [1, 75, 150, 300];
 params.showContourPlot = true;
-attributes.params = params;
-attributes.problem = problem;
 
-PlotBinParameterEffects('MaxIt', [1, 50, 75, 100], attributes, 1);
+for i = iterations
+    
+    params.MaxIt = i;
+    figure;
+    RandOneBin(problem, params);
+    figure;
+    BestOneBin(problem, params);
+    figure;
+    BestTwoBin(problem, params);
+    
+end

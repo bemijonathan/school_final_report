@@ -23,9 +23,9 @@ ylabel('x2')
 
 
 if isfield(params, 'paramName')
-    title('PSO Rosenbrok function ' + string(params.paramName) + ' - ' + string(params.(params.paramName)))
+    title('DE/best/2/bin DE Rosenbrok function ' + string(params.paramName) + ' - ' + string(params.(params.paramName)))
 else
-    title('PSO Rosenbrock Function Contour Plot on Iteration ' + string(it) + ' of ' + string(MaxIt))
+    title('DE/best/2/bin DE Rosenbrock Function Contour Plot on Iteration ' + string(it) + ' of ' + string(MaxIt))
 end
 
 

@@ -1,10 +1,10 @@
-function pop = SortPopulation(pop , method)
-if method == "RandomElimination"
-    pop = randomElimination(pop);
-else
-    [~, so] = sort([pop.Cost]);
-    pop = pop(so);
-end
+function pop = SortPopulation(pop, method)
+    if method == "RandomElimination"
+        pop = randomElimination(pop);
+    else
+        [~, so] = sort([pop.Cost]);
+        pop = pop(so);
+    end
 end
 
 
