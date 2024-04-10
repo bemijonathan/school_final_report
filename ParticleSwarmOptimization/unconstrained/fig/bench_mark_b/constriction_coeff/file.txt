@@ -1,0 +1,27 @@
+0.5 - wdamp - Lower than tolerance: 19
+1 - wdamp - Lower than tolerance: 6
+2 - wdamp
+4 - wdamp
+8 - wdamp
+10 - wdamp
+___
+0.5 - phi1 - Lower than tolerance: 24
+1 - phi1 - Lower than tolerance: 22
+2 - phi1 - Lower than tolerance: 17
+4 - phi1 - Lower than tolerance: 17
+8 - phi1 - Lower than tolerance: 19
+10 - phi1 - Lower than tolerance: 28
+___
+0.5 - phi2 - Lower than tolerance: 26
+1 - phi2 - Lower than tolerance: 15
+2 - phi2 - Lower than tolerance: 19
+4 - phi2 - Lower than tolerance: 19
+8 - phi2 - Lower than tolerance: 20
+10 - phi2 - Lower than tolerance: 21
+___
+0.5 - kappa - Lower than tolerance: 19
+1 - kappa - Lower than tolerance: 11
+2 - kappa - Lower than tolerance: 18
+4 - kappa - Lower than tolerance: 17
+8 - kappa - Lower than tolerance: 13
+10 - kappa - Lower than tolerance: 19

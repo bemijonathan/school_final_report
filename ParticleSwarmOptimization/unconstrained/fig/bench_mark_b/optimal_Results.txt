@@ -1,0 +1,18 @@
+effect of runtime
+2000 - maximumIteration - Lower than tolerance: 36
+min
+1.5 - personalAccCoefficient - Lower than tolerance: 20
+min 
+0 - inertiaCoefficient - Lower than tolerance: 6
+min
+3.1 - socialAccCoefficient - Lower than tolerance: 11
+min
+0.96 - velocityControl - Lower than tolerance: 35
+effect of runtime
+200 - populationSize - Lower than tolerance: 23
+
+
+1 - wdamp - Lower than tolerance: 6
+2 - phi1 - Lower than tolerance: 17
+1 - phi2 - Lower than tolerance: 15
+1 - kappa - Lower than tolerance: 11

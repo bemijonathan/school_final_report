@@ -1,0 +1,50 @@
+i will increase iteration count to higher values since increase in iteration is not yet giving a concurrent apprach
+PlotPSOParameterEffects('maximumIteration', [1000, 2000, 3000, 4000, 5000, 6000], SPOattributes, 1);
+skip because we have a constant direction
+PlotPSOParameterEffects('populationSize', [ 13, 25, 50, 100, 200, 400], SPOattributes, 2);
+Explore more values of inertia inertiaCoefficient for group of valid values
+PlotPSOParameterEffects('inertiaCoefficient', linspace(-0.5, 2, 6), SPOattributes, 3);
+Explore more values of inertia inertiaCoefficient for group of valid values max of 2
+PlotPSOParameterEffects('personalAccCoefficient',linspace(-0.5, 2, 6), SPOattributes, 4);
+explore more values max of 4
+PlotPSOParameterEffects('socialAccCoefficient', linspace(-0.5, 4, 6), SPOattributes, 5);
+explore more values between 0.2 - 1.6 we see an unusual rise and increase in the min iteratiion 
+PlotPSOParameterEffects('velocityControl', linspace(0, 1.6, 6), SPOattributes, 6);
+
+
+
+
+1000 - maximumIteration - Lower than tolerance: 43
+2000 - maximumIteration - Lower than tolerance: 36
+3000 - maximumIteration - Lower than tolerance: 47
+4000 - maximumIteration - Lower than tolerance: 52
+5000 - maximumIteration - Lower than tolerance: 54
+6000 - maximumIteration - Lower than tolerance: 37
+___
+-0.5 - inertiaCoefficient - Lower than tolerance: 100
+0 - inertiaCoefficient - Lower than tolerance: 6
+0.5 - inertiaCoefficient - Lower than tolerance: 13
+1 - inertiaCoefficient - Lower than tolerance: 22
+1.5 - inertiaCoefficient - Lower than tolerance: 93
+2 - inertiaCoefficient - 
+___
+-0.5 - personalAccCoefficient - Lower than tolerance: 59
+0 - personalAccCoefficient - Lower than tolerance: 46
+0.5 - personalAccCoefficient - Lower than tolerance: 53
+1 - personalAccCoefficient - Lower than tolerance: 34
+1.5 - personalAccCoefficient - Lower than tolerance: 20
+2 - personalAccCoefficient - Lower than tolerance: 40
+___
+-0.5 - socialAccCoefficient
+0.4 - socialAccCoefficient - Lower than tolerance: 42
+1.3 - socialAccCoefficient - Lower than tolerance: 46
+2.2 - socialAccCoefficient - Lower than tolerance: 36
+3.1 - socialAccCoefficient - Lower than tolerance: 11
+4 - socialAccCoefficient
+___
+0 - velocityControl 
+0.32 - velocityControl - Lower than tolerance: 52
+0.64 - velocityControl - Lower than tolerance: 67
+0.96 - velocityControl - Lower than tolerance: 35
+1.28 - velocityControl  - Lower than tolerance: 51
+1.6 - velocityControl - Lower than tolerance: 63

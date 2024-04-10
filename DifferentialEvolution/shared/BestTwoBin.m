@@ -88,7 +88,7 @@ for it = 1:MaxIt
     if pausing
         clf;
         Plot;
-        pause;
+        pause(0.05);
     end
     
     

@@ -1,0 +1,8 @@
+1.  If  Temperature is normal  AND  Shortness of Breath is low  AND  Cough is low  THEN  Infection is Low. |
+2.  If  Temperature is normal  AND  (Shortness of Breath is medium  OR  Cough is medium)  THEN  Infection is Medium. |
+3.  If  (Temperature is high  AND  Shortness of Breath is medium)  OR  Cough is high  THEN  Infection is High. |
+4.  If  Temperature is very high  AND  (Shortness of Breath is high  OR  Cough is Severe)  THEN  Infection is Very High.
+5.  If  Temperature is high  AND  Shortness of Breath is high  AND  Cough is Severe  THEN  Infection is Very High.
+6.  If  Temperature is normal  AND  Shortness of Breath is high  AND  Cough is Severe  THEN  Infection is High.
+7.  If  Temperature is high  AND  Shortness of Breath is low  AND  Cough is medium  THEN  Infection is Medium.
+8.  If  (Temperature is high  OR  Temperature is very high)  AND  Shortness of Breath is low  AND  Cough is low  THEN  Infection is Medium.

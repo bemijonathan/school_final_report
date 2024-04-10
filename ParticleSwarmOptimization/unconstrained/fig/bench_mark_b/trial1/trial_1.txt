@@ -1,0 +1,52 @@
+50 - maximumIteration - Lower than tolerance: 20
+100 - maximumIteration - Lower than tolerance: 41
+200 - maximumIteration - Lower than tolerance: 41
+400 - maximumIteration - Lower than tolerance: 25
+800 - maximumIteration - Lower than tolerance: 54
+1600 - maximumIteration - Lower than tolerance: 42
+___
+25 - populationSize - Lower than tolerance: 60
+50 - populationSize - Lower than tolerance: 36
+100 - populationSize - Lower than tolerance: 52
+200 - populationSize - Lower than tolerance: 23
+400 - populationSize - Lower than tolerance: 27
+800 - populationSize - Lower than tolerance: 5
+___
+0.5 -inertiaCoefficient - Lower than tolerance: 8
+1 -inertiaCoefficient - Lower than tolerance: 13
+2 -inertiaCoefficient - Lower than tolerance: 73
+4 -inertiaCoefficient - 
+8 -inertiaCoefficient - 
+16 -inertiaCoefficient - 
+___
+1 - personalAccCoefficient -  Lower than tolerance: 35
+2 - personalAccCoefficient -  Lower than tolerance: 45
+4 - personalAccCoefficient - 
+8 - personalAccCoefficient - 
+10 - personalAccCoefficient - 
+20 - personalAccCoefficient - 
+___
+1 - socialAccCoefficient - Lower than tolerance: 44
+2 - socialAccCoefficient - Lower than tolerance: 46
+4 - socialAccCoefficient - Lower than tolerance: 89
+8 - socialAccCoefficient - 
+10 - socialAccCoefficient - Lower than tolerance: 31
+20 - socialAccCoefficient - 
+___
+0.1 - velocityControl - Lower than tolerance: 18
+0.2 - velocityControl - Lower than tolerance: 37
+0.8 - velocityControl - Lower than tolerance: 92
+1.6 - velocityControl - Lower than tolerance: 54
+3.2 - velocityControl - Lower than tolerance: 46
+6.4 - velocityControl - Lower than tolerance: 41
+
+
+
+
+TRIAL ONE
+PlotPSOParameterEffects('maximumIteration', [25, 50, 100, 200, 400, 800], SPOattributes, 1);
+PlotPSOParameterEffects('populationSize', [ 13, 25, 50, 100, 200, 400], SPOattributes, 2);
+PlotPSOParameterEffects('inertiaCoefficient', [0.25,0.5, 1, 2, 4, 8], SPOattributes, 3);
+PlotPSOParameterEffects('personalAccCoefficient', [0.5, 1, 2, 4, 8, 10], SPOattributes, 4);
+PlotPSOParameterEffects('socialAccCoefficient', [0.5, 1, 2, 4, 8, 10], SPOattributes, 5);
+PlotPSOParameterEffects('velocityControl', [0.05, 0.1, 0.2, 0.8, 1.6, 3.2], SPOattributes, 6);

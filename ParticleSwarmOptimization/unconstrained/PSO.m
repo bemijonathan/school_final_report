@@ -106,7 +106,7 @@ for it=1:MaxIt
     if pausing
         clf;
         Plot;
-        pause;
+        pause(0.1);
     end
     
 end
@@ -117,8 +117,7 @@ out.BestCosts = BestCosts;
 out.TolMin = TolMin;
 
 if showContourPlot
-    Plot
-    pause(0.05)
+    disp(['Iteration ' num2str(MaxIt) ': Best Cost = ' num2str(BestCosts(it))]);
+    Plot;
 end
-
 end

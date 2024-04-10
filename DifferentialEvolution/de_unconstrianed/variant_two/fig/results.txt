@@ -1,0 +1,55 @@
+___
+100 - TolMin == 32
+200 - TolMin == 23
+300 - TolMin == 46
+400 - TolMin == 12
+500 - TolMin == 11
+600 - TolMin == 21
+___
+50 - TolMin == 4
+100 - TolMin == 28
+150 - TolMin == 16
+500 - TolMin == 21
+1000 - TolMin == 17
+1300 - TolMin == 4
+___
+0 - TolMin == 10
+0.2 - TolMin == 17
+0.4 - TolMin == 7
+0.6 - TolMin == 24
+0.8 - TolMin == 41
+1 - TolMin == 64
+___
+0 - TolMin == 8
+0.2 - TolMin == Inf
+0.4 - TolMin == 14
+0.6 - TolMin == 14
+0.8 - TolMin == 14
+1 - TolMin == 24
+___
+0 - TolMin == 33
+0.2 - TolMin == 57
+0.4 - TolMin == 16
+0.6 - TolMin == 17
+0.8 - TolMin == 10
+1 - TolMin == 11
+___
+
+
+optimal combination
+
+maxIt
+significant shift
+400 - TolMin == 12
+nPop
+best combination owing to duration of execution
+150 - TolMin == 16
+beta_min
+best value
+0.4 - TolMin == 7
+beta_max
+best Value
+0 - TolMin == 8
+pcR
+best Value
+0.8 - TolMin == 10

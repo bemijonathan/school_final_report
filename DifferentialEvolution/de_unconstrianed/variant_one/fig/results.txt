@@ -1,0 +1,49 @@
+
+100 - TolMin == 48
+200 - TolMin == 27
+300 - TolMin == 4
+400 - TolMin == 43
+500 - TolMin == 36
+600 - TolMin == 42
+___
+50 - TolMin == 31
+100 - TolMin == 8
+150 - TolMin == 14
+500 - TolMin == 36
+1000 - TolMin == 27
+1300 - TolMin == 10
+___
+0 - TolMin == 19
+0.2 - TolMin == 21
+0.4 - TolMin == 54
+0.6 - TolMin == 55
+0.8 - TolMin == 36
+1 - TolMin == 17
+___
+0 - TolMin == 42
+0.2 - TolMin == Inf
+0.4 - TolMin == 22
+0.6 - TolMin == 36
+0.8 - TolMin == 46
+1 - TolMin == 16
+___
+-0.5 - TolMin == 19
+0.4 - TolMin == 72
+1.3 - TolMin == 41
+2.2 - TolMin == 21
+3.1 - TolMin == 28
+4 - TolMin == 19
+___
+
+optimal values
+
+%% Effect of MaxtIt
+300 - TolMin == 4
+%% Effect of nPop
+100 - TolMin == 8
+%% Effect of beta_min
+1 - TolMin == 17
+%% Effect of beta_max
+1 - TolMin == 16
+%% Effect of pCR
+4 - TolMin == 19
