@@ -41,12 +41,12 @@ SPOattributes.params = params;
 
 % Call the function for each parameter, specifying the subplot index each time
 % %% Trial I find the optimal parameters
-% PlotPSOParameterEffects('maximumIteration', [25, 50, 100, 200, 400, 800], SPOattributes, 1);
-% PlotPSOParameterEffects('populationSize', [ 13, 25, 50, 100, 200, 400], SPOattributes, 2);
-% PlotPSOParameterEffects('inertiaCoefficient', [0.25,0.5, 1, 2, 4, 8], SPOattributes, 3);
-% PlotPSOParameterEffects('personalAccCoefficient', [0.5, 1, 2, 4, 8, 10], SPOattributes, 4);
-% PlotPSOParameterEffects('socialAccCoefficient', [0.5, 1, 2, 4, 8, 10], SPOattributes, 5);
-% PlotPSOParameterEffects('velocityControl', [0.05, 0.1, 0.2, 0.8, 1.6, 3.2], SPOattributes, 6);
+PlotPSOParameterEffects('maximumIteration', [25, 50, 100, 200, 400, 800], SPOattributes, 1);
+PlotPSOParameterEffects('populationSize', [ 13, 25, 50, 100, 200, 400], SPOattributes, 2);
+PlotPSOParameterEffects('inertiaCoefficient', [0.25,0.5, 1, 2, 4, 8], SPOattributes, 3);
+PlotPSOParameterEffects('personalAccCoefficient', [0.5, 1, 2, 4, 8, 10], SPOattributes, 4);
+PlotPSOParameterEffects('socialAccCoefficient', [0.5, 1, 2, 4, 8, 10], SPOattributes, 5);
+PlotPSOParameterEffects('velocityControl', [0.05, 0.1, 0.2, 0.8, 1.6, 3.2], SPOattributes, 6);
 
 
 % PlotPSOParameterEffects('wdamp', [0.5, 1, 2, 4, 8, 10], SPOattributes, 1);
