@@ -1,0 +1,35 @@
+50 : maximumIteration | 37: lastBestCostIterationIndex 
+100 : maximumIteration | 80: lastBestCostIterationIndex 
+250 : maximumIteration | 229: lastBestCostIterationIndex 
+500 : maximumIteration | 304: lastBestCostIterationIndex 
+1000 : maximumIteration | 413: lastBestCostIterationIndex 
+___
+50: populationSize | 170: lastBestCostIterationIndex 
+100: populationSize | 199: lastBestCostIterationIndex 
+250: populationSize | 191: lastBestCostIterationIndex 
+500: populationSize | 160: lastBestCostIterationIndex 
+1000: populationSize | 48: lastBestCostIterationIndex 
+___
+0 : crossOverProbability | 0: lastBestCostIterationIndex 
+0.25 : crossOverProbability | 192: lastBestCostIterationIndex 
+0.6 : crossOverProbability | 126: lastBestCostIterationIndex 
+0.75 : crossOverProbability | 169: lastBestCostIterationIndex 
+1 : crossOverProbability | 178: lastBestCostIterationIndex 
+___
+0: mutationProbability | 156: lastBestCostIterationIndex 
+0.25: mutationProbability | 169: lastBestCostIterationIndex 
+0.6: mutationProbability | 135: lastBestCostIterationIndex 
+0.75: mutationProbability | 197: lastBestCostIterationIndex 
+1 :mutationProbability | 34: lastBestCostIterationIndex 
+___
+5 : nc | 137: lastBestCostIterationIndex 
+10 : nc | 193: lastBestCostIterationIndex 
+15 : nc | 136: lastBestCostIterationIndex 
+30 : nc | 159: lastBestCostIterationIndex 
+40 : nc | 177: lastBestCostIterationIndex 
+___
+5 : eta_m | 188: lastBestCostIterationIndex 
+10 : eta_m | 162: lastBestCostIterationIndex 
+15 : eta_m | 172: lastBestCostIterationIndex 
+30 : eta_m | 118: lastBestCostIterationIndex 
+40 : eta_m | 198: lastBestCostIterationIndex 

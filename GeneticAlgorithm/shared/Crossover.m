@@ -18,5 +18,7 @@ function [y1, y2] = Crossover(x1, x2, params)
     elseif method == "SBX"
         y1 = 0.5.*((x1 + x2) - eta * (x2 - x1));
         y2 = 0.5.*((x1 + x2) + eta * (x2 - x1));
+    elseif method == "Linear"
+       [y1 , y2] =  LinearCrossover(x1, x2);
     end
 end
