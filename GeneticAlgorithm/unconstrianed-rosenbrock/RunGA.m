@@ -22,14 +22,21 @@ showContourPlot = params.showContourPlot;
 % probability cummulation
 crossOverProbability = params.crossOverProbability;
 %  (expected number of cross-overs) * 2 we need to make sure that it is even
-totalNumberCrossOvers = round(crossOverProbability*populationSize/2)*2;
+    % totalNumberCrossOvers;
+
+if params.eliminationType == "(n,y)-strategy"
+    totalNumberCrossOvers = round(crossOverProbability*populationSize/2)*6;
+else
+    totalNumberCrossOvers = round(crossOverProbability*populationSize/2)*2;
+end
+    
 mutationProbability = params.mutationProbability;
 
 %  this gives us the population and the best solution found
 
 % Best Cost of Iterations
 bestcost = nan(maximumIteration, 1);  % [nan] * maximumIteration
-lastBestCostIterationIndex = NaN;
+lastBestCostIterationIndex = 0;
 
 [pop, bestsol] = InitializePopulation(params, problem,  empty_individual);
 

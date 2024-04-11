@@ -45,5 +45,5 @@ ylabel(h, 'log(Cost Function Value)')
 % Set
 axis([problem.VarMin problem.VarMax problem.VarMin problem.VarMax ])
 
-axis tight
+axis equal
 hold off;
