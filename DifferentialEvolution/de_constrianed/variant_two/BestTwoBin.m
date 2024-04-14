@@ -1,6 +1,8 @@
-%% DE/best/1/bin
+%% DE/best/2/bin a Mutate the best individual in the population
 
-function out = BestOneBin(problem , params)
+function out = BestTwoBin(problem , params)
+
+
 % initialize population
 [pop, BestSol] = InitializePopulation(problem, params);
 
@@ -25,10 +27,6 @@ TolMinFlag = false;
 TolMin = Inf;
 
 
-[~, bestIdx] = min([pop.Cost]);
-bestIndividual = pop(bestIdx).Position;
-
-
 for it = 1:MaxIt
     
     for i = 1:nPop
@@ -38,9 +36,13 @@ for it = 1:MaxIt
         r = randperm(nPop);     % Indices for Random Vectors
         r(r == i) = [];         % Remove indices if equal to Target Vector
         
-        % Mutant Vector (Mutation)
+        % Finding the best individual in the population
+        [~, bestIdx] = min([pop.Cost]);
+        bestIndividual = pop(bestIdx).Position;
+        
+        % Mutant Vector (Mutation) for DE/best/2/bin
         beta = unifrnd(beta_min, beta_max, VarSize);
-        v =  bestIndividual + beta.*(pop(r(2)).Position - pop(r(3)).Position);   % Uses Three Random Vectors
+        v = bestIndividual + beta.*(pop(r(1)).Position - pop(r(2)).Position) + beta.*(pop(r(3)).Position - pop(r(4)).Position); % Uses Best and Four Random Vectors
         v = max(v, VarMin);
         v = min(v, VarMax);
         
@@ -86,7 +88,7 @@ for it = 1:MaxIt
     if pausing
         clf;
         Plot;
-        pause;
+        pause(0.05);
     end
     
     
