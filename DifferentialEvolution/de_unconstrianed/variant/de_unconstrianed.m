@@ -94,15 +94,12 @@ benchMarkCB = BenchMark(problem, params, benchMarkMetaData);
 
 iterations = [1, 75, 150, 300];
 params.showContourPlot = true;
+params.contourSubPlotIndex = 1;
 
 for i = iterations
     
     params.MaxIt = i;
-    figure;
-    RandOneBin(problem, params);
-    figure;
-    BestOneBin(problem, params);
-    figure;
     BestTwoBin(problem, params);
-    
+    params.contourSubPlotIndex = params.contourSubPlotIndex + 1;
+
 end

@@ -15,11 +15,13 @@ pCR = params.pCR;
 tolerance = params.tolerance;
 pausing = params.pausing;
 showContourPlot = params.showContourPlot;
+R = params.R; 
 
-CostFunction = problem.CostFunction;
+FitnessValue = problem.FitnessValue;
 VarSize = problem.VarSize;
 VarMin = problem.VarMin;
 VarMax = problem.VarMax;
+OptimalSolution = problem.OptimalSolution;
 
 
 BestCost = zeros(MaxIt, 1);
@@ -54,7 +56,7 @@ for it = 1:MaxIt
         end
         
         NewSol.Position = u;
-        NewSol.Cost = CostFunction(NewSol.Position(1), NewSol.Position(2));
+        NewSol.Cost = FitnessValue(NewSol.Position(1), NewSol.Position(2), R);
         
         % Selection
         if NewSol.Cost<pop(i).Cost
@@ -71,7 +73,7 @@ for it = 1:MaxIt
     BestCost(it) = BestSol.Cost;
 
        
-    if BestSol.Cost < tolerance && TolMinFlag == false
+    if  OptimalSolution - BestSol.Cost > tolerance && TolMinFlag == false
         disp(['Error below tolerance at iteration: ', num2str(it)]);
         TolMin = it;
         TolMinFlag = true;

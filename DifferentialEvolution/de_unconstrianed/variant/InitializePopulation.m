@@ -14,7 +14,7 @@ function [pop, BestSol] = InitializePopulation(problem, params)
         % variable random matrix between Varmin and Varmax [4 -3]
         pop(i).Position = unifrnd(problem.VarMin, problem.VarMax, problem.VarSize);
         % objective function value for each individual
-        pop(i).Cost = problem.FitnessValue(pop(i).Position(1), pop(i).Position(2), params.R);
+        pop(i).Cost = problem.CostFunction(pop(i).Position(1), pop(i).Position(2));
         % if the cost of the individual is less than the best solution cost
         if pop(i).Cost < BestSol.Cost
             BestSol = pop(i);

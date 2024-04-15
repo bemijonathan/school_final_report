@@ -8,18 +8,19 @@ problem.VarMin = 0;            % Lower Bound of Decision Variables
 problem.VarMax = 6;             % Upper Bound of Decision Variables
 problem.Constraints = @(x1, x2, R) InequalityConstraints(x1,x2,R);                    % Constraint
 problem.FitnessValue = @(x1, x2, R) problem.CostFunction(x1,x2) + problem.Constraints(x1,x2,R);       % Fitness Value
+problem.OptimalSolution = 517.063;
 
 
 %% DE Parameters
 
-params.MaxIt = 1000;       % Maximum Number of Iterations
-params.nPop = 100;          % Population Size
+params.MaxIt = 100;       % Maximum Number of Iterations
+params.nPop = 50;          % Population Size
 params.beta_min = 0.2;     % Lower Bound of Scaling Factor (0)
 params.beta_max = 0.8;     % Upper Bound of Scaling Factor (2)
-params.pCR = 1;          % Crossover Probability
-params.tolerance = 517.063;  % Tolerance value
+params.pCR = 0.2;          % Crossover Probability
+params.tolerance = 10^-2;  % Tolerance value
 params.pausing = false;
-params.showContourPlot = true;
+params.showContourPlot = false;
 params.R = 10;
 
 end 

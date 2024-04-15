@@ -38,26 +38,26 @@ benchMarkA = BenchMark(problem, params, benchMarkMetaData);
 % Call the function for each parameter, specifying the subplot index each time
 RandOneBinattributes.problem = problem;
 RandOneBinattributes.params = params;
-
-PlotBinParameterEffects('MaxIt', [100, 200, 300, 400, 500, 600], RandOneBinattributes, 1);
-PlotBinParameterEffects('nPop', [50, 100, 150, 500, 1000, 1300], RandOneBinattributes, 2);
-PlotBinParameterEffects('beta_min', linspace(0, 1, 6), RandOneBinattributes, 3);
-PlotBinParameterEffects('beta_max', linspace(0, 1, 6), RandOneBinattributes, 4);
-PlotBinParameterEffects('pCR', linspace(-0.5, 4, 6), RandOneBinattributes, 5);
+% 
+% PlotBinParameterEffects('MaxIt', [100, 200, 300, 400, 500, 600], RandOneBinattributes, 1);
+% PlotBinParameterEffects('nPop', [50, 100, 150, 500, 1000, 1300], RandOneBinattributes, 2);
+% PlotBinParameterEffects('beta_min', linspace(0, 1, 6), RandOneBinattributes, 3);
+% PlotBinParameterEffects('beta_max', linspace(0, 1, 6), RandOneBinattributes, 4);
+PlotBinParameterEffects('pCR', linspace(0, 1, 6), RandOneBinattributes, 5);
 
 %%
 RandOneBinattributes.problem = problem;
 params.showContourPlot = true;
 RandOneBinattributes.params = params;
 
-PlotBinParameterEffects('MaxIt', [100, 200, 300, 400, 500, 600], RandOneBinattributes, 1);
-figure;
-PlotBinParameterEffects('nPop', [50, 100, 150, 500, 1000, 1300], RandOneBinattributes, 2);
-figure;
-PlotBinParameterEffects('beta_min', linspace(0, 1, 6), RandOneBinattributes, 3);
-figure;
-PlotBinParameterEffects('beta_max', linspace(0, 1, 6), RandOneBinattributes, 4);
-figure;
+% PlotBinParameterEffects('MaxIt', [100, 200, 300, 400, 500, 600], RandOneBinattributes, 1);
+% figure;
+% PlotBinParameterEffects('nPop', [50, 100, 150, 500, 1000, 1300], RandOneBinattributes, 2);
+% figure;
+% PlotBinParameterEffects('beta_min', linspace(0, 1, 6), RandOneBinattributes, 3);
+% figure;
+% PlotBinParameterEffects('beta_max', linspace(0, 1, 6), RandOneBinattributes, 4);
+figure;      
 PlotBinParameterEffects('pCR', linspace(0, 1, 6), RandOneBinattributes, 5);
 
 % find the most efficient run
@@ -76,7 +76,7 @@ params.MaxIt = 300;
 params.nPop = 100;
 params.beta_min = 1;
 params.beta_max = 1;
-params.pCR = 4;
+params.pCR = 1;
 
 
 %% Benchmark B - With Optimal Parameters

@@ -1,5 +1,11 @@
 % Clear Figure
-hold on
+if isfield(params, 'contourSubPlotIndex') 
+    contourSubPlotIndex = params.contourSubPlotIndex;
+    subplot(3, 2 , contourSubPlotIndex)
+    hold on; 
+else
+    hold on
+end 
 
 decisionVarLowerBound = problem.VarMin;
 decisionVarUpperBound = problem.VarMax;
@@ -20,7 +26,7 @@ Z = Himmelblau(X1,X2);
 contour(X1, X2, log(Z), 5);
 xlabel('x1')
 ylabel('x2')
-title('Rosenbrock Function Contour Plot on Iteration ' + string(it) + ' of ' + string(MaxIt))
+title('Himmelblau Function Contour Plot on Iteration ' + string(it) + ' of ' + string(MaxIt))
 
 
 
@@ -33,9 +39,9 @@ disp(BestSol)
 % Plot Best Particle as blue star
 plot(BestSol.Position(1), BestSol.Position(2), 'bo', 'MarkerSize', 20)
 % add color gradient to background of contour plot
-% h = colorbar;
-% ylabel(h, 'log(Cost Function Value)')
+h = colorbar;
+ylabel(h, 'log(Cost Function Value)')
 % Set
-% axis([decisionVarLowerBound decisionVarUpperBound decisionVarLowerBound decisionVarUpperBound])
+axis([decisionVarLowerBound decisionVarUpperBound decisionVarLowerBound decisionVarUpperBound])
 
-axis equal
+axis tight
