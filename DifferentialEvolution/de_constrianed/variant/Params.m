@@ -1,11 +1,15 @@
 function [problem, params] = Params() 
 %% Problem Definition
 
-problem.CostFunction = @(x, y) Rosenbrock(x, y);    % Cost Function
+problem.CostFunction = @(x, y) Himmelblau(x, y);    % Cost Function
 problem.nVar = 2;              % Number of Decision Variables
 problem.VarSize = [1 problem.nVar];     % Decision Variables Matrix Size
-problem.VarMin = -5;            % Lower Bound of Decision Variables
-problem.VarMax = 5;             % Upper Bound of Decision Variables
+problem.VarMin = 0;            % Lower Bound of Decision Variables
+problem.VarMax = 6;             % Upper Bound of Decision Variables
+problem.Constraints = @(x1, x2, R) InequalityConstraints(x1,x2,R);                    % Constraint
+problem.FitnessValue = @(x1, x2, R) problem.CostFunction(x1,x2) + problem.Constraints(x1,x2,R);       % Fitness Value
+problem.OptimalSolution = 517.063;
+
 
 %% DE Parameters
 

@@ -23,7 +23,7 @@ function medianBenchmark = BenchMark(problem, params, properties)
             operatorValue = properties.operatorValue;
             params.(operatorType) = operatorValue;  % Set the operator type and value
         end
-        out = RandOneBin(problem, params);
+        out = BestTwoBin(problem, params);
         
         BestCost = out.BestCost;
         

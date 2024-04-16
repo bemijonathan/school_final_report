@@ -73,11 +73,11 @@ figure;
 
 %% set Optimal Parameters
 [problem, params] = Params();
-params.MaxIt = 100;
-params.nPop = 150;
-params.beta_min = 1.375;
-params.beta_max = 1.5;
-params.pCR = 2; 
+params.MaxIt = 300;
+params.nPop = 100;
+params.beta_min = 1;
+params.beta_max = 1;
+params.pCR = 1; 
 params.R = 100;
 % %% Benchmark B - With Optimal Parameters
 
@@ -90,6 +90,9 @@ savePlot('benchmark_of_optimal_penalty_on_rand_1_bin.png')
 %% Benchmark C - DE/best/1/bin
 % since
 
+
+
+
 benchMarkMetaData.titleText = 'Best Cost vs Iterations using DE/best/1/bin - Himelblau';
 benchMarkMetaData.DiffEvoAlgorithm = @(x, y) BestOneBin(x, y);
 benchMarkCA = BenchMark(problem, params, benchMarkMetaData);
@@ -98,6 +101,13 @@ savePlot('benchmark_of_penalty_on_best_1_bin.png')
 
 %% Benchmark CB - DE/best/2/bin
 % since
+[problem, params] = Params();
+params.MaxIt = 400;
+params.nPop = 150;
+params.beta_min =0.4;
+params.beta_max = 0.8;
+params.pCR = 0.8;
+params.R = 100;
 
 benchMarkMetaData.titleText = 'Best Cost vs Iterations using DE/best/2/bin - Himelblau';
 benchMarkMetaData.DiffEvoAlgorithm = @(x, y) BestTwoBin(x, y);
@@ -106,7 +116,7 @@ savePlot('benchmark_of_penalty_on_best_2_bin.png')
 
 %% conclusion showing contour of 3 BenchMark
 
-iterations = [1, 10, 20, 40];
+iterations = [1, 5, 10, 50 ];
 params.showContourPlot = true;
 params.contourSubPlotIndex = 1;
 

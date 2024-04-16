@@ -86,23 +86,39 @@ benchMarkCA = BenchMark(problem, params, benchMarkMetaData);
 %% Benchmark CB - DE/best/2/bin
 % since
 
+[problem, params] = Params();
+params.MaxIt = 400;
+params.nPop = 150;
+params.beta_min =0.4;
+params.beta_max = 0.8;
+params.pCR = 0.8;
+params.R = 100;
+
+
 benchMarkMetaData.titleText = 'Best Cost vs Iterations using DE/best/2/bin - Himelblau';
 benchMarkMetaData.DiffEvoAlgorithm = @(x, y) BestTwoBin(x, y);
 benchMarkCB = BenchMark(problem, params, benchMarkMetaData);
 
 %% conclusion showing contour of 3 BenchMark
 
-iterations = [1, 75, 150, 300];
+
+[problem, params] = Params();
+params.MaxIt = 400;
+params.nPop = 150;
+params.beta_min =0.4;
+params.beta_max = 0.8;
+params.pCR = 0.8;
+params.R = 100;
+
+
+iterations = [1, 5, 10, 50, 100 ];
 params.showContourPlot = true;
+params.contourSubPlotIndex = 1;
 
 for i = iterations
     
     params.MaxIt = i;
-    figure;
-    RandOneBin(problem, params);
-    figure;
-    BestOneBin(problem, params);
-    figure;
     BestTwoBin(problem, params);
+    params.contourSubPlotIndex = params.contourSubPlotIndex + 1;
     
 end
