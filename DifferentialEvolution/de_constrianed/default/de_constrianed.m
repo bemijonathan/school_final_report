@@ -8,22 +8,22 @@ addpath('../../shared');
 
 
 % Show Results
-% out = RandOneBin(problem, params);
+out = RandOneBin(problem, params);
 % savePlot('default_constrained.png')
 
 %% Plot line graph
 % clf;
-% plot(out.BestCost, 'LineWidth', 2);
-% % mark the point of first minimum convergence
-% hold on;
-% if(out.TolMin ~= Inf)
-%     plot(out.TolMin, out.BestCost(out.TolMin), 'ro', 'MarkerSize', 10, 'LineWidth', 2);
-% end
-% xlabel('Iteration');
-% ylabel('Best Cost');
-% title('Best Cost vs Iterations - Himmelblau');
-% grid on;
-% legend('Best Cost', 'First Minimum Convergence' + string(out.TolMin));
+plot(out.BestCost, 'LineWidth', 2);
+% mark the point of first minimum convergence
+hold on;
+if(out.TolMin ~= Inf)
+    plot(out.TolMin, out.BestCost(out.TolMin), 'ro', 'MarkerSize', 10, 'LineWidth', 2);
+end
+xlabel('Iteration');
+ylabel('Best Cost');
+title('Best Cost vs Iterations - Himmelblau');
+grid on;
+legend('Best Cost', 'First Minimum Convergence' + string(out.TolMin));
 
 
 %% Benchmark A

@@ -7,7 +7,7 @@ empty_particle.Cost = [];
 empty_particle.Best.Position = [];
 empty_particle.Best.Cost = [];
 
-CostFunction = problem.CostFunction;
+FitnessValue = problem.FitnessValue;
 numberOfVariables = problem.numberOfVariables;        % Number of Unknown (Decision) Variables
 VarSize = [1 numberOfVariables];         % Matrix Size of Decision Variables
 decisionVarLowerBound = problem.decisionVarLowerBound;	% Lower Bound of Decision Variables
@@ -30,7 +30,7 @@ for i=1:populationSize
     particle(i).Velocity = zeros(VarSize);
     
     % Evaluation
-    particle(i).Cost = CostFunction(particle(i).Position(1), particle(i).Position(2));
+    particle(i).Cost = FitnessValue(particle(i).Position(1), particle(i).Position(2), params.R);
     
     % Update the Personal Best
     particle(i).Best.Position = particle(i).Position;

@@ -6,7 +6,8 @@ numberOfVariables = problem.numberOfVariables;        % Number of Unknown (Decis
 VarSize = [1 numberOfVariables];         % Matrix Size of Decision Variables
 decisionVarLowerBound = problem.decisionVarLowerBound;	% Lower Bound of Decision Variables
 decisionVarUpperBound = problem.decisionVarUpperBound;    % Upper Bound of Decision Variables
-R = problem.R;
+optimumFitnessValue = problem.optimumFitnessValue;
+R = params.R;
 
 %% Parameters of PSO
 MaxIt = params.MaxIt;   % Maximum Number of Iterations
@@ -89,7 +90,7 @@ for it=1:MaxIt
     
     % if the best cost value is less than the tolerance and the flag is not set
     % this is reffered to as the minimum tolerance for the cost value
-    if abs(BestCosts(it)) < params.tol && TolMinFlag == false
+    if optimumFitnessValue - abs(BestCosts(it)) > params.tol && TolMinFlag == false
         disp(['Lower than tolerance: ', num2str(it)]);
         TolMin = it;
         TolMinFlag = true;

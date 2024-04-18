@@ -25,8 +25,8 @@ grid on;
 % this is the benchmark for the standard PSO algorithm
 % we plot 10 runs of the algorithm and take the median of
 
-% benchMarkMetaData.titleText = 'Best Cost vs Iterations - Rosenbrock';
-% benchMarkA = BenchMark(problem, params, benchMarkMetaData);
+benchMarkMetaData.titleText = 'Best Cost vs Iterations - Rosenbrock';
+benchMarkA = BenchMark(problem, params, benchMarkMetaData);
 
 
 %%  Benchmark B
@@ -68,39 +68,40 @@ PlotPSOParameterEffects('velocityControl', [0.05, 0.1, 0.2, 0.8, 1.6, 3.2], SPOa
 function z = setupOptimizationProblem()
 z.CostFunction = @(x, x2) Rosenbrock(x, x2);
 z.numberOfVariables = 2;
-z.decisionVarLowerBound = -10;
-z.decisionVarUpperBound = 10;
+z.decisionVarLowerBound = -5;
+z.decisionVarUpperBound = 5;
 end
 
 function p = setupPSOParams()
-p.MaxIt = 2000;        % Maximum Number of Iterations
-p.populationSize = 200;           % Population Size (Swarm Size)
+p.MaxIt = 100;        % Maximum Number of Iterations
+p.populationSize = 50;           % Population Size (Swarm Size)
 % Intertia Coefficient - Determines the level of exploration or
 % exploitation of the particle size in the population.
-p.inertiaCoefficient = 0;
+p.inertiaCoefficient = 1;
 % Damping Ratio of Inertia Coefficient used to reduce the velocity
 % of the inertia coefficient as it goes through the iteration
-p.wdamp = 1;
+p.wdamp = 0.99;
 % Personal Acceleration Coefficient is the first part of the PSO.
 % it determines the accelation of the particle towards the local best.
-p.personalAccCoefficient = 1.5;
+p.personalAccCoefficient = 2;
 % It determins the  accelation of the particle towards the global best
-p.socialAccCoefficient = 3.1;
+p.socialAccCoefficient = 2;
 
 
 p.tol  = 10^-2; % Theoritical Minimum Value for the Cost Function
-p.velocityControl = 0.96; % Velocity Control Coefficient
+p.velocityControl = 0.2; % Velocity Control Coefficient
 
 % plot controls
 % Other inline code parameters
 % these are not actual paramters but will be used to plot the graphs.
 p.ShowIterInfo = false; % Flag for Showing Iteration Informatin
 % if true show progression of the contour plot per generation
-p.pausing = false ;
+p.pausing = false;
 % if true shows the contour plot
-p.showContourPlot = true;
+p.showContourPlot = false;
 
 end
+
 
 
 function cc = setUpConstrictionCoefficients()
@@ -109,8 +110,8 @@ function cc = setUpConstrictionCoefficients()
 kappa = 1;
 
 % phi1 and phi2 represent cognitive and social coefficients respectively.
-phi1 = 2;
-phi2 = 1;
+phi1 = 2.05;
+phi2 = 2.05;
 
 % Calculate the sum of cognitive and social coefficients.
 phi = phi1 + phi2;
@@ -129,3 +130,7 @@ cc.personalAccCoefficient = chi*phi1; % Personal Acceleration Coefficient from C
 % scaled by constriction coefficient chi.
 cc.socialAccCoefficient = chi*phi2; % Social Acceleration Coefficient from Constriction Coefficients
 end
+
+
+
+

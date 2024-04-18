@@ -1,21 +1,27 @@
 Understanding the Data
 
-It seems like you're dealing with data from an optimization process (potentially PSO, but it could be others) applied to a toning problem. Let's break down what we know:
+It seems like you're dealing with data from an optimization process 
+(potentially PSO, but it could be others) applied to a toning problem. Let's break down what we know:
 
 maximumIteration: The maximum number of iterations your algorithm was allowed to run.
-first convergence point: The iteration at which the algorithm first converged to a solution (likely within your desired tolerance for the toning process).
+first convergence point: The iteration at which the algorithm first converged to a solution 
+(likely within your desired tolerance for the toning process).
 Determining the "Best" Value
 
 The "best" maximumIteration value depends on your priorities:
 
-Efficiency: If minimizing computation time is the absolute priority, a maximumIteration of 100 seems ideal, as it converges fastest (in 6 iterations).
-Solution Quality vs. Time: If you're willing to trade a bit of time for a potentially better solution, then either 400 or 800 maximumIteration might be appropriate. These converge quickly as well (within 4-44 iterations) and the extra iterations might lead to refinement of the toning parameters.
+Efficiency: If minimizing computation time is the absolute priority, a maximumIteration of 100 seems ideal, 
+as it converges fastest (in 6 iterations).
+Solution Quality vs. Time: If you're willing to trade a bit of time for a potentially better solution, 
+then either 400 or 800 maximumIteration might be appropriate. These converge quickly as well 
+(within 4-44 iterations) and the extra iterations might lead to refinement of the toning parameters.
 Unknown factors: There might be factors we don't know, like:
 How stable is the solution found in 6 iterations?
 Does the algorithm always find better solutions given more time?
 Are the values too far apart?
 
-Inconsistency: The large variation in first convergence points, (6 to 55 iterations) suggests inconsistency. This could be due to:
+Inconsistency: The large variation in first convergence points, (6 to 55 iterations) suggests inconsistency. 
+This could be due to:
 Stochastic Nature of the Algorithm: If your algorithm is stochastic (like PSO), there's inherent randomness in each run, leading to varying convergence times.
 Problem Sensitivity: The toning problem itself might be highly sensitive to initial conditions or parameter choices, causing large fluctuations in convergence.
 Recommendations for Improvement

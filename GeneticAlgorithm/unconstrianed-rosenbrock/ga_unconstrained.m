@@ -43,6 +43,18 @@ plot(out.bestcost, 'LineWidth', 2);
 xlabel('Iterations');
 ylabel('Best Cost');
 grid on;
+
+%%
+params.selectionMethod = "RouletteWheel";
+out = RunGA(problem, params);
+plot(out.bestcost, 'LineWidth', 2);
+
+%%
+
+params.crossoverType = "Linear";
+out = RunGA(problem, params);
+plot(out.bestcost, 'LineWidth', 2);
+grid on;
 hold off;
 
 %% median bench mark after 5 iterations
@@ -58,7 +70,7 @@ attributes.params = params;
 
 % Call the function for each parameter, specifying the subplot index each time
 PlotGAParameterEffects('maximumIteration', [50, 100, 250, 500, 1000],attributes, 1);
-savePlot('effect_of_maxIteration.png');
+% savePlot('effect_of_maxIteration.png');
 figure;
 PlotGAParameterEffects('populationSize', [50, 100, 250, 500, 1000],attributes,2);
 savePlot('effect_of_population_size.png');

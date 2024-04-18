@@ -73,7 +73,7 @@ for it = 1:MaxIt
     BestCost(it) = BestSol.Cost;
 
        
-    if  OptimalSolution - BestSol.Cost > tolerance && TolMinFlag == false
+    if BestSol.Cost - OptimalSolution <= tolerance&& TolMinFlag == false
         disp(['Error below tolerance at iteration: ', num2str(it)]);
         TolMin = it;
         TolMinFlag = true;

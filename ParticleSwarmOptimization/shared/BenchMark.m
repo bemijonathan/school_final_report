@@ -37,7 +37,7 @@ end
 
 % Calculate the median of the benchmark
 median_x = round(median(medianBenchmark));
-plot(median_x, min(ylim), 'ro', 'MarkerSize', numberOfIterations, 'LineWidth', 2);
+plot(median_x, 0, 'ro', 'MarkerSize', numberOfIterations, 'LineWidth', 2);
 legendInfo{(numberOfIterations + 1)} = ['Median after 5 iterations: ' num2str(median_x)];
 legend(legendInfo);
 hold off;

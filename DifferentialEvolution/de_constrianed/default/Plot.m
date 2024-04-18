@@ -44,4 +44,4 @@ ylabel(h, 'log(Cost Function Value)')
 % Set
 axis([decisionVarLowerBound decisionVarUpperBound decisionVarLowerBound decisionVarUpperBound])
 
-axis tight
+axis equal
