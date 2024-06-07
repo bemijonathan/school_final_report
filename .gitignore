@@ -1,0 +1,7 @@
+git ignore for python projects
+
+venv
+__pycache__
+*.pyc
+*.pyo
+.idea
